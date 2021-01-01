@@ -106,22 +106,36 @@ Eg: ``--rule this_rule.yaml``
 ``--config`` allows you to specify the location of the configuration. By default, it is will look for config.yaml in the current directory.
 
 ## Third Party Tools And Extras
+
+### ElastAlert-Docker
+
+This Dockerfile will build a Docker image for Elastalert. This image is compatible with the accompanying Helm chart for Kubernetes.
+https://github.com/jertel/elastalert-docker
+
+### ElastAlert uses ElastAlert Helm Chart almost as it is *Use original Docker Image to fix bugs
+
+[ElastAlert Server Helm Chart](https://github.com/daichi703n/elastalert-helm)<br>
+[Praeco Helm Chart](https://github.com/daichi703n/praeco-helm)<br>
+[Installing Praeco (ElastAlert GUI) into Kubernetes with Helm](https://en-designetwork.daichi703n.com/entry/2020/02/24/praeco-helm-kubernetes)
+
 ### Kibana plugin
-![img](https://raw.githubusercontent.com/bitsensor/elastalert-kibana-plugin/master/showcase.gif)
-Available at the [ElastAlert Kibana plugin repository](https://github.com/bitsensor/elastalert-kibana-plugin).
+![img](https://raw.githubusercontent.com/nsano-rururu/elastalert-kibana-plugin/master/showcase.gif)
+Available at the [ElastAlert Kibana plugin fork repository](https://github.com/nsano-rururu/elastalert-kibana-plugin).
 
 ### Docker
-A [Dockerized version](https://github.com/bitsensor/elastalert) of ElastAlert including a REST api is build from `master` to `bitsensor/elastalert:latest`.
+A [Dockerized version fork repository](https://github.com/johnsusek/elastalert-server) of ElastAlert including a REST api is build from `master` to `praecoapp/elastalert-server:latest`.
 
 ```bash
-git clone https://github.com/bitsensor/elastalert.git; cd elastalert
-docker run -d -p 3030:3030 \
+git clone https://github.com/johnsusek/elastalert-server.git; cd elastalert-server
+mkdir -p rules rule_templates
+chmod -R 777 rules rule_templates
+docker run -d -p 3030:3030 -p 3333:3333 \
     -v `pwd`/config/elastalert.yaml:/opt/elastalert/config.yaml \
     -v `pwd`/config/config.json:/opt/elastalert-server/config/config.json \
     -v `pwd`/rules:/opt/elastalert/rules \
     -v `pwd`/rule_templates:/opt/elastalert/rule_templates \
     --net="host" \
-    --name elastalert bitsensor/elastalert:latest
+    --name elastalert praecoapp/elastalert-server:latest
 ```
 
 ## Documentation

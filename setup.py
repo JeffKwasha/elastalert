@@ -47,6 +47,7 @@ setup(
         'texttable>=0.8.8',
         'twilio>=6.0.0,<6.1',
         'cffi>=1.11.5',
+        'tzlocal==2.1',
         'py-zabbix>=1.1.3'
     ]
 )

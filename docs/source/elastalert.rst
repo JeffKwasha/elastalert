@@ -43,7 +43,7 @@ Currently, we have support built in for these alert types:
 - Mattermost
 - Telegram
 - GoogleChat
-- Splunk On-Call
+- Splunk On-Call (Formerly VictorOps)
 - PagerDuty
 - PagerTree
 - Exotel

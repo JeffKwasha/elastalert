@@ -39,22 +39,32 @@ Several rule types with common monitoring paradigms are included with ElastAlert
 
 Currently, we have built-in support for the following alert types:
 
+- Alert Subject
+- Alert Content
+- Command
 - Email
 - JIRA
 - OpsGenie
-- Commands
+- AWS SNS
 - MS Teams
 - Slack
+- Mattermost
 - Telegram
 - GoogleChat
-- AWS SNS
 - Splunk On-Call
 - PagerDuty
 - PagerTree
 - Exotel
 - Twilio
 - Gitter
+- ServiceNow
+- Debug
+- Stomp
+- Alerta
+- HTTP POST
+- Alerter
 - Line Notify
+- theHive
 - Zabbix
 
 Additional rule types and alerts can be easily imported or written.
@@ -141,7 +151,7 @@ docker run -d -p 3030:3030 -p 3333:3333 \
 
 ### Praeco
 ![Praeco screenshot](https://user-images.githubusercontent.com/611996/47752071-7c4a9080-dc61-11e8-8ccf-2196f13429b2.png)
-[Praeco](https://github.com/ServerCentral/praeco) from [ServerCentral](https://www.servercentral.com/) is a free open source GUI for ElastAlert.
+[Praeco](https://github.com/johnsusek/praeco) is a free open source GUI for ElastAlert.
 
 ## Documentation
 

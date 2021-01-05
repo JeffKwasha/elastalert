@@ -139,6 +139,10 @@ docker run -d -p 3030:3030 -p 3333:3333 \
     --name elastalert praecoapp/elastalert-server:latest
 ```
 
+### Praeco
+![Praeco screenshot](https://user-images.githubusercontent.com/611996/47752071-7c4a9080-dc61-11e8-8ccf-2196f13429b2.png)
+[Praeco](https://github.com/ServerCentral/praeco) from [ServerCentral](https://www.servercentral.com/) is a free open source GUI for ElastAlert.
+
 ## Documentation
 
 Read the documentation at [Read the Docs](http://elastalert.readthedocs.org).

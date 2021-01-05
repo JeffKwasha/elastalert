@@ -1,6 +1,5 @@
 Recent changes: As of Elastalert 0.2.0, you must use Python 3.8. Python 2 will not longer be supported.
 
-[![Build Status](https://travis-ci.org/Yelp/elastalert.svg)](https://travis-ci.org/Yelp/elastalert)
 [![Join the chat at https://gitter.im/Yelp/elastalert](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Yelp/elastalert?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## ElastAlert - [Read the Docs](http://elastalert.readthedocs.org).
@@ -80,13 +79,9 @@ In addition to this basic usage, there are many other features that make alerts 
 To get started, check out `Running ElastAlert For The First Time` in the [documentation](http://elastalert.readthedocs.org).
 
 ## Running ElastAlert
-You can either install the latest released version of ElastAlert using pip:
+you can clone the ElastAlert repository for the most recent changes:
 
-```pip install elastalert```
-
-or you can clone the ElastAlert repository for the most recent changes:
-
-```git clone https://github.com/Yelp/elastalert.git```
+```git clone https://github.com/nsano-rururu/elastalert.git```
 
 Install the module:
 

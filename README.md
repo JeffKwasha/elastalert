@@ -104,6 +104,8 @@ Eg: ``--rule this_rule.yaml``
 
 ``--config`` allows you to specify the location of the configuration. By default, it is will look for config.yaml in the current directory.
 
+``--prometheus_port`` exposes ElastAlert Prometheus metrics on the specified port. Prometheus metrics disabled by default.
+
 ## Third Party Tools And Extras
 
 ### ElastAlert-Docker

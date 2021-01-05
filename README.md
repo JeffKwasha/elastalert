@@ -51,7 +51,7 @@ Currently, we have built-in support for the following alert types:
 - Mattermost
 - Telegram
 - GoogleChat
-- Splunk On-Call
+- Splunk On-Call (Formerly VictorOps)
 - PagerDuty
 - PagerTree
 - Exotel

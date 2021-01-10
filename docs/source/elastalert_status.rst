@@ -55,7 +55,7 @@ When an error occurs in ElastAlert, it is written to both Elasticsearch and to s
 - ``data``: Extra information about the error. This often contains the name of the rule which caused the error.
 
 elastalert_silence
-~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 ``elastalert_silence`` is a record of when alerts for a given rule will be suppressed, either because of a ``realert`` setting or from using --silence. When
 an alert with ``realert`` is triggered, a ``elastalert_silence`` record will be written with ``until`` set to the alert time plus ``realert``.

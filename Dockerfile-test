@@ -1,11 +1,22 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install software-properties-common -y
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get -y install build-essential python3.8 python3.8-dev python3-pip libssl-dev git
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get -y install software-properties-common \
+    && add-apt-repository ppa:deadsnakes/ppa \
+    && apt-get -y install --no-install-recommends \
+        build-essential \
+        git \
+        libssl-dev \
+        python3-pip \
+        python3.8 \
+        python3.8-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/elastalert
 
-ADD requirements*.txt ./
-RUN pip3 install -r requirements-dev.txt
+COPY requirements*.txt ./
+
+RUN pip3 install -U pip setuptools \
+        && /usr/local/bin/pip3 install -r requirements-dev.txt

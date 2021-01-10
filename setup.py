@@ -40,7 +40,7 @@ setup(
         'mock>=2.0.0',
         'prison>=0.1.2',
         'PyStaticConfiguration>=0.10.3',
-        'python-dateutil>=2.6.0,<2.7.0',
+        'python-dateutil>=2.6.0,<2.9.0',
         'PyYAML>=5.1',
         'requests>=2.10.0',
         'stomp.py>=4.1.17',

@@ -63,7 +63,7 @@ Currently, we have built-in support for the following alert types:
 - HTTP POST
 - Alerter
 - Line Notify
-- theHive
+- TheHive
 - Zabbix
 
 Additional rule types and alerts can be easily imported or written.

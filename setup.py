@@ -31,6 +31,7 @@ setup(
         'aws-requests-auth>=0.3.0',
         'boto3>=1.4.4',
         'cffi>=1.11.5',
+        'configparser>=3.5.0',
         'croniter>=0.3.16',
         'elasticsearch==7.0.0',
         'envparse>=0.2.0',

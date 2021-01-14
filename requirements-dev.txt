@@ -6,4 +6,4 @@ pylint<2.7
 pytest<3.3.0
 setuptools
 sphinx_rtd_theme
-tox==3.21.0
+tox==3.21.1

@@ -299,7 +299,7 @@ properties:
   mattermost_msg_pretext: {type: string}
   mattermost_msg_fields: *mattermostField
 
-  ## Opsgenie
+  ### Opsgenie
   opsgenie_details:
     type: object
     minProperties: 1
@@ -318,7 +318,7 @@ properties:
   pagerduty_client_name: {type: string}
   pagerduty_event_type: {enum: [none, trigger, resolve, acknowledge]}
 
-### PagerTree
+  ### PagerTree
   pagertree_integration_url: {type: string}
 
 
@@ -384,3 +384,6 @@ properties:
   zbx_sender_port: {type: integer}
   zbx_host: {type: string}
   zbx_key: {type: string}
+
+  ### Discord
+  discord_webhook_url: {type: string}

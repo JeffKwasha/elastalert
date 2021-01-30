@@ -2273,7 +2273,7 @@ Required:
 Discord
 ~~~~~~~
 
-Discord will send notification to a Line application. The body of the notification is formatted the same as with other alerters.
+Discord will send notification to a Discord application. The body of the notification is formatted the same as with other alerters.
 
 Required:
 
@@ -2298,7 +2298,7 @@ Optional:
 Dingtalk
 ~~~~~~~~
 
-Dingtalk will send notification to a Line application. The body of the notification is formatted the same as with other alerters.
+Dingtalk will send notification to a Dingtalk application. The body of the notification is formatted the same as with other alerters.
 
 Required:
 

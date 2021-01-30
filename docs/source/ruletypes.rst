@@ -2354,3 +2354,21 @@ Example msgtype : action_card::
     dingtalk_msgtype: 'action_card'
     dingtalk_btn_orientation: '0'
     dingtalk_btns: [{'title': 'a', 'actionURL': 'https://xxxx1.xxx'}, {'title': 'b', 'actionURL': 'https://xxxx2.xxx'}]
+
+Chatwork
+~~~~~~~~
+
+Chatwork will send notification to a Chatwork application. The body of the notification is formatted the same as with other alerters.
+
+Required:
+
+``chatwork_apikey``:  ChatWork API KEY.
+
+``chatwork_room_id``: The ID of the room you are talking to in Chatwork. How to find the room ID is the part of the number after "rid" at the end of the URL of the browser.
+
+Example usage::
+
+    alert:
+    - chatwork
+    chatwork_apikey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    chatwork_room_id: 'xxxxxxxxx'

@@ -39,6 +39,7 @@ setup(
         'elasticsearch>=7.0.0,<8.0.0',
         'envparse>=0.2.0',
         'exotel>=0.1.3',
+        'Jinja2==2.10.1',
         'jira>=2.0.0',
         'jsonschema>=3.0.2',
         'mock>=2.0.0',

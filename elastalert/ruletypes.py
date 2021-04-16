@@ -1283,22 +1283,35 @@ class PercentageMatchRule(BaseAggregationRule):
         }
 
     def check_matches(self, timestamp, query_key, aggregation_data):
-        match_bucket_count = aggregation_data['percentage_match_aggs']['buckets']['match_bucket']['doc_count']
-        other_bucket_count = aggregation_data['percentage_match_aggs']['buckets']['_other_']['doc_count']
+        """ determine whether the number of matching hits violates the min/max percentage
+        "buckets": [{
+          "key": "10.xxx.xxx.xxx",
+          "doc_count": 720,                 # This looks like total_count
+          "percentage_match_aggs": {
+            "buckets": {
+              "match_bucket": { "doc_count": 0 },
+              "_other_": { "doc_count": 720 }        # ES 6.3.0: skipped if doc_count would be 0
+            }
+          }
+        }]
+        """
+        buckets = aggregation_data['percentage_match_aggs']['buckets']
+        total_count = buckets.get('doc_count')
+        match_bucket_count = buckets.get('match_bucket', {}).get('doc_count', 0)
+        other_bucket_count = buckets.get('_other_', {}).get('doc_count', 0)
 
-        if match_bucket_count is None or other_bucket_count is None:
+        if total_count is None:
+            total_count = other_bucket_count + match_bucket_count
+
+        if total_count == 0 or total_count < self.min_denominator:
             return
         else:
-            total_count = other_bucket_count + match_bucket_count
-            if total_count == 0 or total_count < self.min_denominator:
-                return
-            else:
-                match_percentage = (match_bucket_count * 1.0) / (total_count * 1.0) * 100
-                if self.percentage_violation(match_percentage):
-                    match = {self.rules['timestamp_field']: timestamp, 'percentage': match_percentage, 'denominator': total_count}
-                    if query_key is not None:
-                        match[self.rules['query_key']] = query_key
-                    self.add_match(match)
+            match_percentage = (match_bucket_count * 1.0) / (total_count * 1.0) * 100
+            if self.percentage_violation(match_percentage):
+                match = {self.rules['timestamp_field']: timestamp, 'percentage': match_percentage, 'denominator': total_count}
+                if query_key is not None:
+                    match[self.rules['query_key']] = query_key
+                self.add_match(match)
 
     def percentage_violation(self, match_percentage):
         if 'max_percentage' in self.rules and match_percentage > self.rules['max_percentage']:

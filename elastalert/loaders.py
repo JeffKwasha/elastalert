@@ -319,6 +319,10 @@ class RulesLoader(object):
             rule.setdefault('client_cert', conf.get('client_cert'))
             rule.setdefault('client_key', conf.get('client_key'))
 
+        # Add supoprt for custom http headers
+        if 'http_headers' in conf:
+            rule.setdefault('http_headers', conf.get('http_headers'))
+
         # Make sure we have required options
         if self.required_locals - frozenset(list(rule.keys())):
             raise EAException('Missing required option(s): %s' % (', '.join(self.required_locals - frozenset(list(rule.keys())))))

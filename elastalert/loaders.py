@@ -81,6 +81,7 @@ class RulesLoader(object):
         'linenotify': alerts.LineNotifyAlerter,
         'pagertree': alerts.PagerTreeAlerter,
         'zabbix': ZabbixAlerter,
+        'alertmanager': alerts.AlertmanagerAlerter,
         'discord': alerts.DiscordAlerter,
         'dingtalk': alerts.DingTalkAlerter,
         'chatwork': alerts.ChatworkAlerter

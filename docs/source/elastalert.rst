@@ -33,6 +33,7 @@ Currently, we have support built in for these alert types:
 
 - Alert Subject
 - Alert Content
+- Alertmanager
 - Command
 - Email
 - JIRA

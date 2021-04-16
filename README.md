@@ -42,6 +42,7 @@ Currently, we have built-in support for the following alert types:
 
 - Alert Subject
 - Alert Content
+- Alertmanager
 - Command
 - Email
 - JIRA

@@ -2252,3 +2252,62 @@ class ChatworkAlerter(Alerter):
             "type": "chatwork",
             "chatwork_room_id": self.chatwork_room_id
         }
+
+
+class AlertmanagerAlerter(Alerter):
+    """ Sends an alert to Alertmanager """
+
+    required_options = frozenset({'alertmanager_hosts'})
+
+    def __init__(self, rule):
+        super(AlertmanagerAlerter, self).__init__(rule)
+        self.urls = ['{}/api/v1/alerts'.format(host) for host in self.rule['alertmanager_hosts']]
+        self.alertname = self.rule.get('alertmanager_alertname', self.rule['name'])
+        self.labels = self.rule.get('alertmanager_labels', dict())
+        self.annotations = self.rule.get('alertmanager_annotations', dict())
+        self.fields = self.rule.get('alertmanager_fields', dict())
+        self.title_labelname = self.rule.get('alertmanager_alert_subject_labelname', 'summary')
+        self.body_labelname = self.rule.get('alertmanager_alert_text_labelname', 'description')
+        self.proxies = {'https': self.rule.get('alertmanager_proxy')} if self.rule.get('alertmanager_proxy') else None
+        self.verify_ssl = self.rule.get('alertmanager_verify_ssl', True)
+
+    @staticmethod
+    def _json_or_string(obj):
+        """helper to encode non-string objects to JSON"""
+        if isinstance(obj, str):
+            return obj
+        return json.dumps(obj, cls=DateTimeEncoder)
+
+    def alert(self, matches):
+        self.labels.update({
+            label: self._json_or_string(lookup_es_key(matches[0], term))
+            for label, term in self.fields.items()})
+        self.labels.update(
+            alertname=self.alertname,
+            elastalert_rule=self.rule['name'])
+        self.annotations.update({
+            self.title_labelname: self.create_title(matches),
+            self.body_labelname: self.create_alert_body(matches)})
+        payload = json.dumps([{
+            'annotations': self.annotations,
+            'labels': self.labels}], cls=DateTimeEncoder)
+
+        try:
+            if not self.verify_ssl:
+                warnings.filterwarnings('ignore', message='Unverified HTTPS request')
+            for url in self.urls:
+                response = requests.post(
+                    url,
+                    data=payload,
+                    headers={'content-type': 'application/json'},
+                    verify=self.verify_ssl,
+                    proxies=self.proxies,
+                )
+                response.raise_for_status()
+            warnings.resetwarnings()
+        except RequestException as e:
+            raise EAException("Error posting to Alertmanager: %s" % e)
+        elastalert_logger.info("Alert sent to Alertmanager")
+
+    def get_info(self):
+        return {'type': 'alertmanager'}

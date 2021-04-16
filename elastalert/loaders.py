@@ -82,6 +82,7 @@ class RulesLoader(object):
         'pagertree': alerts.PagerTreeAlerter,
         'zabbix': ZabbixAlerter,
         'alertmanager': alerts.AlertmanagerAlerter,
+        'datadog': alerts.DatadogAlerter,
         'discord': alerts.DiscordAlerter,
         'dingtalk': alerts.DingTalkAlerter,
         'chatwork': alerts.ChatworkAlerter

@@ -44,6 +44,7 @@ Currently, we have built-in support for the following alert types:
 - Alert Content
 - Alertmanager
 - Command
+- Datadog
 - Email
 - JIRA
 - OpsGenie

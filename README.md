@@ -40,38 +40,38 @@ Several rule types with common monitoring paradigms are included with ElastAlert
 
 Currently, we have built-in support for the following alert types:
 
+- Alerta
+- Alerter
 - Alert Subject
 - Alert Content
 - Alertmanager
+- AWS SNS
+- Chatwork
 - Command
 - Datadog
-- Email
-- JIRA
-- OpsGenie
-- AWS SNS
-- MS Teams
-- Slack
-- Mattermost
-- Telegram
-- GoogleChat
-- Splunk On-Call (Formerly VictorOps)
-- PagerDuty
-- PagerTree
-- Exotel
-- Twilio
-- Gitter
-- ServiceNow
 - Debug
-- Stomp
-- Alerta
-- HTTP POST
-- Alerter
-- Line Notify
-- TheHive
-- Zabbix
 - Discord
 - Dingtalk
-- Chatwork
+- Email
+- Exotel
+- Gitter
+- GoogleChat
+- HTTP POST
+- JIRA
+- Line Notify
+- OpsGenie
+- PagerDuty
+- PagerTree
+- Mattermost
+- MS Teams
+- ServiceNow
+- Slack
+- Splunk On-Call (Formerly VictorOps)
+- Stomp
+- Telegram
+- TheHive
+- Twilio
+- Zabbix
 
 Additional rule types and alerts can be easily imported or written.
 

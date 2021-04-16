@@ -1284,7 +1284,7 @@ class PercentageMatchRule(BaseAggregationRule):
 
     def check_matches(self, timestamp, query_key, aggregation_data):
         """ determine whether the number of matching hits violates the min/max percentage
-        "buckets": [{
+        "buckets": {
           "key": "10.xxx.xxx.xxx",
           "doc_count": 720,                 # This looks like total_count
           "percentage_match_aggs": {
@@ -1293,15 +1293,12 @@ class PercentageMatchRule(BaseAggregationRule):
               "_other_": { "doc_count": 720 }        # ES 6.3.0: skipped if doc_count would be 0
             }
           }
-        }]
+        }
         """
         buckets = aggregation_data['percentage_match_aggs']['buckets']
-        total_count = buckets.get('doc_count')
         match_bucket_count = buckets.get('match_bucket', {}).get('doc_count', 0)
         other_bucket_count = buckets.get('_other_', {}).get('doc_count', 0)
-
-        if total_count is None:
-            total_count = other_bucket_count + match_bucket_count
+        total_count = other_bucket_count + match_bucket_count
 
         if total_count == 0 or total_count < self.min_denominator:
             return
